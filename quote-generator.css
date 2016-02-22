@@ -3,6 +3,12 @@
     margin-bottom: 35px;
 }
 
+
+/*instructions*/
+#instructions p{
+    font-size: 17px;
+}
+
 /*button*/
 #quote-selector button{
     width:200px;
@@ -14,4 +20,12 @@
 /*quote*/
 #quote{
     font-size: 30px;
+}
+
+#author{
+    font-size: 20px;
+}
+
+#quote-display{
+    padding: 10px;
 }
