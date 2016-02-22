@@ -1,0 +1,17 @@
+/* white spacing */
+.bottom-margin{
+    margin-bottom: 35px;
+}
+
+/*button*/
+#quote-selector button{
+    width:200px;
+    height: 50px;
+    background-color: black;
+    font-size: 20px;
+}
+
+/*quote*/
+#quote{
+    font-size: 30px;
+}
