@@ -1,28 +1,22 @@
-var Data = {
-    url: "http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?"
-}
+$(document).ready(()=>{App.init()});
 
 var App = {
-    init: function(){
-        App.set_event_listeners();
+    init: () => {
+        App.setEvents();
     },
 
-    set_event_listeners: function(){
-        $("#quote-selector button").on("click", View.generate_quote)
+    setEvents: () => {
+        $("button").on("click", View.generateQuote);
     }
-
 }
 
 var View = {
 
-    generate_quote: function(){
-        $.getJSON(Data.url, function(data){
+    generateQuote: () => {
+        var url = "http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?";
+        $.getJSON(url, (data)=>{
             $("#quote em").html(data.quoteText);
             $("#author b").html("~" + data.quoteAuthor);
         });
     }
 }
-
-$(document).ready(function(){
-    App.init();
-});

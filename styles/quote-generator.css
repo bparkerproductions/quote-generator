@@ -1,0 +1,32 @@
+/* white spacing */
+.bottom-margin{
+    margin-bottom: 35px;
+}
+
+
+/*instructions*/
+#instructions p{
+    font-size: 17px;
+}
+
+/*button*/
+#quote-selector button{
+    width:200px;
+    height: 50px;
+    background-color: black;
+    font-size: 20px;
+}
+
+/*quote*/
+#quote{
+    font-size: 30px;
+}
+
+#author{
+    font-size: 20px;
+}
+
+#quote-display{
+    padding-left: 10px;
+    padding-right: 10px;
+}
