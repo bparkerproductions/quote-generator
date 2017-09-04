@@ -1,32 +1,22 @@
-/* white spacing */
-.bottom-margin{
-    margin-bottom: 35px;
-}
+body .bottom-margin {
+  margin-bottom: 35px; }
 
+#instructions p {
+  font-size: 17px; }
+#instructions h2, #instructions p {
+  margin-bottom: 20px; }
+#instructions button {
+  width: 200px;
+  height: 50px;
+  border-radius: initial;
+  font-size: 20px; }
 
-/*instructions*/
-#instructions p{
-    font-size: 17px;
-}
-
-/*button*/
-#quote-selector button{
-    width:200px;
-    height: 50px;
-    background-color: black;
-    font-size: 20px;
-}
-
-/*quote*/
-#quote{
-    font-size: 30px;
-}
-
-#author{
-    font-size: 20px;
-}
-
-#quote-display{
+#quote {
+  font-size: 30px; }
+  #quote #author {
+    font-size: 20px; }
+  #quote #quote-display {
     padding-left: 10px;
-    padding-right: 10px;
-}
+    padding-right: 10px; }
+
+/*# sourceMappingURL=quote-generator.css.map */
