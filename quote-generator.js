@@ -3,6 +3,7 @@ $(document).ready(()=>{App.init()});
 var App = {
     init: () => {
         App.setEvents();
+        //redditWrap.searchByAuthor();
     },
 
     setEvents: () => {
@@ -18,5 +19,29 @@ var View = {
             $("#quote em").html(data.quoteText);
             $("#author b").html("~" + data.quoteAuthor);
         });
+    }
+}
+
+var redditWrap = {
+    endpoint: "https://www.reddit.com",
+
+    searchByAuthor: () => {
+        var searchURL = "https://www.reddit.com/r/quotes/search.json?q=Lucille+Ball&sort=popular&limit=100";
+        var data = redditWrap.grabJSON(searchURL);
+        data.then((obj)=>{
+            obj.data.children.forEach((i)=>{
+                redditWrap.viewData(i.data.title)
+            })
+        })
+    },
+
+    viewData: (data) => {
+        console.log(data);
+    },
+
+    grabJSON: (url) => {
+        return new Promise((resolve, reject)=>{
+            $.getJSON(url, (data) => {resolve(data)});
+        })
     }
 }
