@@ -1,5 +1,12 @@
-body .bottom-margin {
-  margin-bottom: 35px; }
+body {
+  background-color: #FFFEFC;
+  color: #333; }
+  body h1, body h2, body h3, body h4, body h5, body h6 {
+    font-family: "Raleway", sans-serif; }
+  body p, body li, body a {
+    font-family: 'Open-sans', sans-serif; }
+  body .bottom-margin {
+    margin-bottom: 35px; }
 
 #instructions p {
   font-size: 17px; }
@@ -8,16 +15,20 @@ body .bottom-margin {
 #instructions button {
   width: 200px;
   height: 50px;
+  font-size: 20px;
+  background-color: #131112;
   border-radius: initial;
-  font-size: 20px; }
+  border: initial; }
 
-#quote {
-  font-size: 30px; }
-  #quote #author {
-    font-size: 20px; }
-  #quote #quote-display {
-    padding-left: 10px;
-    padding-right: 10px; }
+#quote-display {
+  padding: 20px;
+  background-color: #1678D1;
+  color: #FFFEFC; }
+  #quote-display #quote {
+    font-size: 2em; }
+  #quote-display #author {
+    font-weight: bold;
+    font-size: 1.5em; }
 
 #seeMore #redditFeed {
   list-style: none;
@@ -27,5 +38,9 @@ body .bottom-margin {
   width: 60%; }
   #seeMore #redditFeed li {
     margin-bottom: 20px; }
+#seeMore #growFeed {
+  background-color: #131112;
+  border-radius: initial;
+  border: initial; }
 
 /*# sourceMappingURL=quote-generator.css.map */

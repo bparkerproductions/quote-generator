@@ -8,6 +8,7 @@ Data.currentAuthor = "";
 var App = {
     init: () => {
         App.setEvents();
+        View.init();
     },
 
     setEvents: () => {
@@ -21,7 +22,8 @@ var App = {
         var tweetBtn = $('<a></a>')
             .addClass('twitter-share-button')
             .attr('href', 'http://twitter.com/share')
-            .attr('data-text', `${quote} ~ ${author}`);
+            .attr('data-text', `${quote} ~ ${author}`)
+            .attr('data-size', 'large');
         $('#tweet-button').append(tweetBtn);
         twttr.widgets.load();
         }
@@ -30,7 +32,7 @@ var App = {
 var View = {
 
     init: () => {
-
+        $("#seeMore").hide();
     },
 
     generateQuote: () => {
@@ -38,14 +40,14 @@ var View = {
         View.reset();
 
         $.getJSON(url, (data)=>{
-            $("#quote em").html(data.quoteText);
+            $("#quote").html(data.quoteText);
             App.setTwitterQuote(data.quoteText, data.quoteAuthor);
             if(data.quoteAuthor){
-                $("#author b").html(`~ ${data.quoteAuthor}`);
+                $("#author").html(`~ ${data.quoteAuthor}`);
                 redditWrap.searchByAuthor(data.quoteAuthor);
             }
             else{
-                $("#author b").html("~ Anonymous");
+                $("#author").html("~ Anonymous");
                 View.clearFeed();
                 View.hideButtons();
             }
@@ -57,6 +59,7 @@ var View = {
 
         //put elements back
         $("#growFeed").show();
+        $("#seeMore").show();
     },
 
     generateFeedElem: (title, url, term) => {

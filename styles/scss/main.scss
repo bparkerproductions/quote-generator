@@ -1,49 +1,19 @@
+@import 'colors';
+
 body{
+    background-color: $white;
+    color: #333;
+
+    h1,h2,h3,h4,h5,h6{
+        font-family: "Raleway", sans-serif;
+    }
+
+    p, li, a{ font-family: 'Open-sans', sans-serif; }
     .bottom-margin{
         margin-bottom: 35px;
     }
 }
 
-#instructions {
-    p{
-        font-size: 17px;
-    }
-
-    h2,p{ margin-bottom: 20px; }
-
-    button{
-        width:200px;
-        height: 50px;
-        border-radius: initial;
-        font-size: 20px;
-    }
-}
-
-
-#quote{
-    font-size: 30px;
-
-    #author{
-        font-size: 20px;
-    }
-
-    #quote-display{
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-}
-
-#seeMore{
-    #redditFeed{
-            list-style:none;
-            font-size:1.2em;
-            margin: 0 auto;
-            padding: 0;
-            width:60%;
-
-            li{
-                margin-bottom: 20px;
-            }
-    }
-}
-
+@import 'instructions';
+@import 'quote-display';
+@import 'see-more';

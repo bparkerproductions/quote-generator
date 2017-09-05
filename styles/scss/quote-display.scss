@@ -1,0 +1,14 @@
+#quote-display{
+    padding: 20px;
+    background-color: $blue;
+    color: $white;
+
+    #quote{
+        font-size: 2em;
+    }
+
+    #author{
+        font-weight:bold;
+        font-size:1.5em;
+    }
+}
