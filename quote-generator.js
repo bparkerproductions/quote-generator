@@ -12,7 +12,7 @@ var App = {
 
     setEvents: () => {
         $("#generateQuote").on("click", View.generateQuote);
-        $("#growFeed").on('click', View.growFeed);
+        $("#growFeed").on('click', redditWrap.growFeed);
     }
 }
 
@@ -36,30 +36,19 @@ var View = {
 
     generateFeedElem: (title, url, term) => {
 
-        if(redditWrap.filterTitle(title, term)){
             var entryStr = `
                 <li>
-                    <a href="${url}">${title}</a>
+                    <a target="_blank" href="${url}">${title}</a>
                 </li>
             `;
 
             $("#redditFeed").append(entryStr);
-        }
     },
 
     clearFeed: () => {
         $("#redditFeed").empty();
-    },
-
-    growFeed: () => {
-        var amount = parseInt(Data.feedPage)*5;
-        View.clearFeed();
-        var data = redditWrap.pagenate(Data.currentFeed, amount);
-        data.forEach((e)=>{
-            View.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
-        });
-        Data.feedPage++;
     }
+
 }
 
 var redditWrap = {
@@ -68,14 +57,14 @@ var redditWrap = {
         Data.currentAuthor = author;
 
         var title = author.trim().split(" ").join("+");
-        var searchURL = `https://www.reddit.com/r/quotes/search.json?q=${title}&sort=popular&limit=100`;
+        var searchURL = `https://www.reddit.com/search.json?q=${title}&sort=popular&limit=10`;
 
         var data = redditWrap.grabJSON(searchURL);
         View.clearFeed(); //clear feed for regenerating
         data.then((obj)=>{
+            var filtered = redditWrap.filterTitle(obj.data.children, author);
             Data.currentFeed = filtered;
-            var filtered = redditWrap.removeDups(obj.data.children);
-            var pagenate = redditWrap.pagenate(obj.data.children, 5);
+            var pagenate = redditWrap.pagenate(filtered, 5);
             pagenate.forEach((e)=>{
                 View.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
             })
@@ -92,9 +81,7 @@ var redditWrap = {
     },
 
     pagenate: (arr, amount) =>{
-        console.log(arr);
-        console.log(amount);
-        return arr.splice(1, amount);
+        return arr.slice(0,amount);
     },
 
     grabJSON: (url) => {
@@ -103,7 +90,26 @@ var redditWrap = {
         })
     },
 
-    filterTitle: (title, searchTerm) =>{
-        return title.includes(searchTerm) ? true : false;
+    filterTitle: (arr, searchTerm) =>{
+        searchTerm = searchTerm.toLowerCase();
+
+        return arr.filter((elem)=>{
+            elem = elem.data.title.toLowerCase();
+            return elem.includes(searchTerm);
+        }).reverse();
     },
+
+    growFeed: () => {
+        Data.feedPage++;
+        var amount = parseInt(Data.feedPage)*5;
+        if(amount > Data.currentFeed.length){
+          console.log('end')
+        }
+        //console.log(amount)
+        View.clearFeed();
+        var data = redditWrap.pagenate(Data.currentFeed, amount);
+        data.forEach((e)=>{
+            View.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
+        });
+    }
 }
