@@ -13,16 +13,33 @@ var App = {
     setEvents: () => {
         $("#generateQuote").on("click", View.generateQuote);
         $("#growFeed").on('click', redditWrap.growFeed);
-    }
+    },
+
+    setTwitterQuote: (quote, author) => {
+        $('#tweet-button iframe').remove();
+
+        var tweetBtn = $('<a></a>')
+            .addClass('twitter-share-button')
+            .attr('href', 'http://twitter.com/share')
+            .attr('data-text', `${quote} ~ ${author}`);
+        $('#tweet-button').append(tweetBtn);
+        twttr.widgets.load();
+        }
 }
 
 var View = {
 
+    init: () => {
+
+    },
+
     generateQuote: () => {
         var url = "http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?";
-        Data.feedPage = 1; //reset pagenation
+        View.reset();
+
         $.getJSON(url, (data)=>{
             $("#quote em").html(data.quoteText);
+            App.setTwitterQuote(data.quoteText, data.quoteAuthor);
             if(data.quoteAuthor){
                 $("#author b").html(`~ ${data.quoteAuthor}`);
                 redditWrap.searchByAuthor(data.quoteAuthor);
@@ -30,8 +47,16 @@ var View = {
             else{
                 $("#author b").html("~ Anonymous");
                 View.clearFeed();
+                View.hideButtons();
             }
         });
+    },
+
+    reset: () => {
+        Data.feedPage = 1; //reset pagenation
+
+        //put elements back
+        $("#growFeed").show();
     },
 
     generateFeedElem: (title, url, term) => {
@@ -47,6 +72,14 @@ var View = {
 
     clearFeed: () => {
         $("#redditFeed").empty();
+    },
+
+    hideButtons: () => {
+        $("#growFeed").hide();
+    },
+
+    maxResults: () => {
+        $("#growFeed").hide();
     }
 
 }
@@ -57,7 +90,7 @@ var redditWrap = {
         Data.currentAuthor = author;
 
         var title = author.trim().split(" ").join("+");
-        var searchURL = `https://www.reddit.com/search.json?q=${title}&sort=popular&limit=10`;
+        var searchURL = `https://www.reddit.com/search.json?q=${title}&sort=popular&limit=100`;
 
         var data = redditWrap.grabJSON(searchURL);
         View.clearFeed(); //clear feed for regenerating
@@ -103,9 +136,8 @@ var redditWrap = {
         Data.feedPage++;
         var amount = parseInt(Data.feedPage)*5;
         if(amount > Data.currentFeed.length){
-          console.log('end')
+          View.maxResults();
         }
-        //console.log(amount)
         View.clearFeed();
         var data = redditWrap.pagenate(Data.currentFeed, amount);
         data.forEach((e)=>{

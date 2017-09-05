@@ -34,7 +34,13 @@
                 <h3> Like this quote? See more </h3>
                 <div class="flex-container">
                     <a href="#">Facebook</a>
-                    <a href="#">Twitter</a>
+                    <div id="tweet-button">
+                    <a class="twitter-share-button"
+                        href="https://twitter.com/intent/tweet"
+                        data-text="replace me"
+                        >
+                    Tweet</a>
+                    </div>
                 </div>
 
                 <ul id="redditFeed">
@@ -47,6 +53,7 @@
 
         <!-- javascript and jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="quote-generator.js"> </script>
+        <script src="js/quote-generator.js"> </script>
+        <script src="js/twitterLoader.js"></script>
     </body>
 </html>
