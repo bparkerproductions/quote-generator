@@ -19,4 +19,13 @@ body .bottom-margin {
     padding-left: 10px;
     padding-right: 10px; }
 
+#seeMore #redditFeed {
+  list-style: none;
+  font-size: 1.2em;
+  margin: 0 auto;
+  padding: 0;
+  width: 60%; }
+  #seeMore #redditFeed li {
+    margin-bottom: 20px; }
+
 /*# sourceMappingURL=quote-generator.css.map */

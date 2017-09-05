@@ -24,6 +24,16 @@ var View = {
                 $("#author b").html("~ Anonymous");
             }
         });
+    },
+
+    generateFeed: (title, url) => {
+        var entryStr = `
+            <li>
+                <a href="${url}">${title}</a>
+            </li>
+        `;
+        
+        $("#redditFeed").append(entryStr);
     }
 }
 
@@ -32,18 +42,14 @@ var redditWrap = {
 
     searchByAuthor: (author) => {
         var title = author.trim().split(" ").join("+");
-        console.log(title);
         var searchURL = `https://www.reddit.com/r/quotes/search.json?q=${title}&sort=popular&limit=100`;
+
         var data = redditWrap.grabJSON(searchURL);
         data.then((obj)=>{
-            obj.data.children.forEach((i)=>{
-                redditWrap.viewData(i.data.title)
+            obj.data.children.forEach((e)=>{
+                View.generateFeed(e.data.title, e.data.url)
             })
         })
-    },
-
-    viewData: (data) => {
-        console.log(data);
     },
 
     grabJSON: (url) => {
