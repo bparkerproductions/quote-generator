@@ -14,6 +14,7 @@ var App = {
     setEvents: () => {
         $("#generateQuote").on("click", View.generateQuote);
         $("#growFeed").on('click', redditWrap.growFeed);
+        $("#scroll-top").on('click', View.scrollTop);
     },
 
     setTwitterQuote: (quote, author) => {
@@ -39,7 +40,7 @@ var App = {
             return {"faClass":"reddit-alien","title":"Reddit self text"};
         }
         //youtube
-        else if(url.includes("www.youtube.com")){
+        else if(url.includes("youtube")){
             return {"faClass":"youtube-play","title":"Youtube video"};
         }
         //else, assume it's a website or blog post
@@ -114,6 +115,12 @@ var View = {
 
     maxResults: () => {
         $("#growFeed").hide();
+    },
+
+    scrollTop: () => {
+        $('html, body').animate({
+            scrollTop: $("#instructions").offset().top
+        }, 250);
     }
 
 }

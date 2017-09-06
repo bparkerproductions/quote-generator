@@ -42,7 +42,7 @@ body {
   font-size: 1.4em;
   position: relative;
   left: -7px; }
-#seeMore #growFeed {
+#seeMore #growFeed, #seeMore #scroll-top {
   background-color: #131112;
   border-radius: initial;
   border: initial; }
