@@ -38,6 +38,10 @@ body {
   width: 60%; }
   #seeMore #redditFeed li {
     margin-bottom: 20px; }
+#seeMore .fa {
+  font-size: 1.4em;
+  position: relative;
+  left: -7px; }
 #seeMore #growFeed {
   background-color: #131112;
   border-radius: initial;

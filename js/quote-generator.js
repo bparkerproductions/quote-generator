@@ -26,7 +26,27 @@ var App = {
             .attr('data-size', 'large');
         $('#tweet-button').append(tweetBtn);
         twttr.widgets.load();
+    },
+
+    getFAClass: (url) => {
+        //url is an img
+        if(url.includes("i.redd.it") || url.includes("imgur.com")
+            || url.includes("reddituploads")){
+            return {"faClass":"picture-o", "title": "Image"}
         }
+        //reddit self text
+        else if(url.includes("www.reddit.com")){
+            return {"faClass":"reddit-alien","title":"Reddit self text"};
+        }
+        //youtube
+        else if(url.includes("www.youtube.com")){
+            return {"faClass":"youtube-play","title":"Youtube video"};
+        }
+        //else, assume it's a website or blog post
+        else{
+            return {"faClass":"rss-square","title":"Blog post or website"};
+        }
+    }
 }
 
 var View = {
@@ -62,10 +82,16 @@ var View = {
         $("#seeMore").show();
     },
 
-    generateFeedElem: (title, url, term) => {
+    generateFeedElem: (title, url) => {
+
+            var faClass = App.getFAClass(url);
 
             var entryStr = `
                 <li>
+                    <i 
+                        class="fa fa-${faClass.faClass}"
+                        title="${faClass.title}">
+                    </i>
                     <a target="_blank" href="${url}">${title}</a>
                 </li>
             `;
@@ -98,6 +124,7 @@ var redditWrap = {
         var data = redditWrap.grabJSON(searchURL);
         View.clearFeed(); //clear feed for regenerating
         data.then((obj)=>{
+            console.log(obj.data.children);
             var filtered = redditWrap.filterTitle(obj.data.children, author);
             Data.currentFeed = filtered;
             var pagenate = redditWrap.pagenate(filtered, 5);
