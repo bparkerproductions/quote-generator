@@ -65,6 +65,7 @@ var View = {
             if(data.quoteAuthor){
                 $("#author").html(`~ ${data.quoteAuthor}`);
                 redditWrap.searchByAuthor(data.quoteAuthor);
+                View.setAuthor(data.quoteAuthor);
             }
             else{
                 $("#author").html("~ Anonymous");
@@ -72,14 +73,18 @@ var View = {
                 View.hideButtons();
             }
         });
+        var author = $("#author").text().replace("~"," ");
     },
 
     reset: () => {
         Data.feedPage = 1; //reset pagenation
-
         //put elements back
         $("#growFeed").show();
         $("#seeMore").show();
+    },
+
+    setAuthor: (author) => {
+        $("#more-from-author").text(`See more from ${author}`)
     },
 
     generateFeedElem: (title, url) => {
