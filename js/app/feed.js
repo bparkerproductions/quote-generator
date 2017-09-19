@@ -7,7 +7,7 @@ var Feed = {
         var searchURL = `https://www.reddit.com/search.json?q=${title}&sort=popular&limit=100`;
 
         var data = Feed.grabJSON(searchURL);
-        View.clearFeed(); //clear feed for regenerating
+        Feed.Views.clearFeed(); //clear feed for regenerating
 
         Feed.generateFeed(data, author);
     },
@@ -18,7 +18,7 @@ var Feed = {
             Data.currentFeed = filtered;
             var pagenate = Feed.pagenate(filtered, 5);
             pagenate.forEach((e)=>{
-                View.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
+                Feed.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
             })
         });
     },
@@ -57,10 +57,35 @@ var Feed = {
         if(amount > Data.currentFeed.length){
           View.maxResults();
         }
-        View.clearFeed();
+        Feed.Views.clearFeed();
         var data = Feed.pagenate(Data.currentFeed, amount);
         data.forEach((e)=>{
             View.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
         });
+    },
+
+    generateFeedElem: (title, url) => {
+            var faClass = App.getFAClass(url);
+            Feed.Views.appendFeedElement(faClass, url, title);
+    },
+
+    Views:{
+        appendFeedElement: (faClass, url, title) => {
+            var entryStr = `
+                <li>
+                    <i 
+                        class="fa fa-${faClass.faClass}"
+                        title="${faClass.title}">
+                    </i>
+                    <a target="_blank" href="${url}">${title}</a>
+                </li>
+            `;
+
+            $("#redditFeed").append(entryStr);
+        },
+
+        clearFeed: () => {
+            $("#redditFeed").empty();
+        },
     }
 }

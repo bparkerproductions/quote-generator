@@ -5,11 +5,6 @@ Data.feedPage = 1;
 Data.currentFeed = "";
 Data.currentAuthor = "";
 
-var Feed = {
-
-}
-
-
 var App = {
     init: () => {
         App.setEvents();
@@ -56,7 +51,6 @@ var App = {
 }
 
 var View = {
-
     init: () => {
         $("#seeMore").hide();
     },
@@ -75,7 +69,7 @@ var View = {
             }
             else{
                 $("#author").html("~ Anonymous");
-                View.clearFeed();
+                Feed.Views.clearFeed();
                 View.hideButtons();
             }
         });
@@ -91,27 +85,6 @@ var View = {
 
     setAuthor: (author) => {
         $("#more-from-author").text(`See more from ${author}`)
-    },
-
-    generateFeedElem: (title, url) => {
-
-            var faClass = App.getFAClass(url);
-
-            var entryStr = `
-                <li>
-                    <i 
-                        class="fa fa-${faClass.faClass}"
-                        title="${faClass.title}">
-                    </i>
-                    <a target="_blank" href="${url}">${title}</a>
-                </li>
-            `;
-
-            $("#redditFeed").append(entryStr);
-    },
-
-    clearFeed: () => {
-        $("#redditFeed").empty();
     },
 
     hideButtons: () => {
