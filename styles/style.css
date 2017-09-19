@@ -1,0 +1,71 @@
+body {
+  background-color: #222222;
+  color: #FFFEFC; }
+  body h1, body h2, body h3, body h4, body h5, body h6 {
+    font-family: "Raleway", sans-serif; }
+  body p, body li, body a {
+    font-family: 'Open-sans', sans-serif; }
+  body .bottom-margin {
+    margin-bottom: 35px; }
+
+#instructions {
+  padding: 25px 0; }
+  #instructions p {
+    font-size: 17px;
+    margin-bottom: 35px; }
+  #instructions h2 {
+    margin-bottom: 20px; }
+  #instructions button {
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    background-color: #E1A530;
+    color: #222222;
+    border-radius: initial;
+    border: initial;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    #instructions button:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+
+#quote-display {
+  padding: 20px;
+  background-color: #0A4C76;
+  color: #FFFEFC; }
+  #quote-display #quote {
+    font-size: 2em; }
+  #quote-display #author {
+    font-weight: bold;
+    font-size: 1.5em; }
+
+#seeMore #redditFeed {
+  list-style: none;
+  font-size: 1.2em;
+  margin: 0 auto;
+  padding: 0;
+  width: 60%; }
+  #seeMore #redditFeed li {
+    margin-bottom: 20px; }
+#seeMore h3 {
+  padding-bottom: 12px; }
+#seeMore button {
+  width: initial;
+  height: initial;
+  font-size: 1em;
+  background-color: #E1A530;
+  color: #222222;
+  border-radius: initial;
+  border: initial;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 10px; }
+  #seeMore button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+#seeMore #see-more, #seeMore #scroll-top {
+  margin: 0 5px; }
+#seeMore .fa {
+  font-size: 1.4em;
+  position: relative;
+  left: -7px; }
+
+/*# sourceMappingURL=style.css.map */

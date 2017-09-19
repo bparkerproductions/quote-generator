@@ -11,15 +11,22 @@
             }
     }
 
+    h3{
+        padding-bottom: 12px;
+    }
+
+    button{
+        @include main-button(initial, initial, 1em);
+        padding: 10px;
+    }
+
+    #see-more, #scroll-top{
+        margin: 0 5px;
+    }
+
     .fa{
         font-size: 1.4em;
         position: relative;
         left: -7px;
-    }
-
-    #growFeed, #scroll-top{
-        background-color: $black;
-        border-radius: initial;
-        border: initial;
     }
 }

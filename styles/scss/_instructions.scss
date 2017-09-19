@@ -1,16 +1,14 @@
 #instructions {
+    padding: 25px 0;
+
     p{
         font-size: 17px;
+        margin-bottom: 35px;
     }
 
-    h2,p{ margin-bottom: 20px; }
+    h2{ margin-bottom: 20px; }
 
     button{
-        width:200px;
-        height: 50px;
-        font-size: 20px;
-        background-color: $black;
-        border-radius: initial;
-        border: initial;
+        @include main-button(200px, 50px, 20px);
     }
 }
