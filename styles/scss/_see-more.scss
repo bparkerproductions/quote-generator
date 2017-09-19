@@ -15,6 +15,10 @@
         padding-bottom: 12px;
     }
 
+    a{
+        color: $white;
+    }
+
     button{
         @include main-button(initial, initial, 1em);
         padding: 10px;
@@ -28,5 +32,10 @@
         font-size: 1.4em;
         position: relative;
         left: -7px;
+        color: $yellow;
+    }
+
+    #button-container{
+        padding: 20px;
     }
 }
