@@ -65,9 +65,29 @@ var Feed = {
     },
 
     generateFeedElem: (title, url) => {
-            var faClass = App.getFAClass(url);
+            var faClass = Feed.getFAClass(url);
             Feed.Views.appendFeedElement(faClass, url, title);
     },
+
+    getFAClass: (url) => {
+        //url is an img
+        if(url.includes("i.redd.it") || url.includes("imgur.com")
+            || url.includes("reddituploads")){
+            return {"faClass":"picture-o", "title": "Image"}
+        }
+        //reddit self text
+        else if(url.includes("www.reddit.com")){
+            return {"faClass":"reddit-alien","title":"Reddit self text"};
+        }
+        //youtube
+        else if(url.includes("youtube")){
+            return {"faClass":"youtube-play","title":"Youtube video"};
+        }
+        //else, assume it's a website or blog post
+        else{
+            return {"faClass":"rss-square","title":"Blog post or website"};
+        }
+    }
 
     Views:{
         appendFeedElement: (faClass, url, title) => {
