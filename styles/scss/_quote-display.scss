@@ -1,10 +1,17 @@
 #quote-display{
     padding: 20px;
-    background-color: $blue;
     color: $white;
+
+    padding-bottom: 24px;
+    border-bottom: 2px solid $footer-color;
 
     #quote{
         font-size: 2em;
+    }
+
+    blockquote{
+        border-color: $yellow;
+        color: $white
     }
 
     #author{

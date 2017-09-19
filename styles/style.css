@@ -31,48 +31,60 @@ body {
 
 #quote-display {
   padding: 20px;
-  background-color: #0A4C76;
-  color: #FFFEFC; }
+  color: #FFFEFC;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #292929; }
   #quote-display #quote {
     font-size: 2em; }
+  #quote-display blockquote {
+    border-color: #E1A530;
+    color: #FFFEFC; }
   #quote-display #author {
     font-weight: bold;
     font-size: 1.5em; }
 
-#seeMore #redditFeed {
-  list-style: none;
-  font-size: 1.2em;
-  margin: 0 auto;
-  padding: 0;
-  width: 60%; }
-  #seeMore #redditFeed li {
-    margin-bottom: 20px; }
-#seeMore h3 {
-  padding-bottom: 12px; }
-#seeMore a {
-  color: #FFFEFC; }
-#seeMore button {
-  width: initial;
-  height: initial;
-  font-size: 1em;
-  font-family: 'Lato', sans-serif;
-  background-color: #E1A530;
-  color: #222222;
-  border-radius: initial;
-  border: initial;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  padding: 10px; }
-  #seeMore button:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
-#seeMore #see-more, #seeMore #scroll-top {
-  margin: 0 5px; }
-#seeMore .fa {
-  font-size: 1.4em;
-  position: relative;
-  left: -7px;
-  color: #E1A530; }
-#seeMore #button-container {
-  padding: 20px; }
+#seeMore {
+  padding: 24px 0; }
+  #seeMore #redditFeed {
+    list-style: none;
+    font-size: 1.2em;
+    margin: 0 auto;
+    padding: 0;
+    width: 60%; }
+    #seeMore #redditFeed li {
+      margin-bottom: 20px; }
+  #seeMore h3 {
+    padding-bottom: 12px; }
+  #seeMore a {
+    color: #FFFEFC; }
+  #seeMore button {
+    width: initial;
+    height: initial;
+    font-size: 1em;
+    font-family: 'Lato', sans-serif;
+    background-color: #E1A530;
+    color: #222222;
+    border-radius: initial;
+    border: initial;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    padding: 10px; }
+    #seeMore button:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+  #seeMore #see-more, #seeMore #scroll-top {
+    margin: 0 5px; }
+  #seeMore .fa {
+    font-size: 1.4em;
+    position: relative;
+    left: -7px;
+    color: #E1A530; }
+  #seeMore #button-container {
+    padding: 20px; }
+
+footer {
+  background-color: #292929;
+  padding: 15px 0; }
+  footer p {
+    margin: 0 0 0 12px; }
 
 /*# sourceMappingURL=style.css.map */
