@@ -9,6 +9,7 @@ var App = {
     init: () => {
         App.setEvents();
         View.init();
+        Quote.generateQuote();
     },
 
     setEvents: () => {

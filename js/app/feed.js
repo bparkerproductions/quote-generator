@@ -60,7 +60,7 @@ var Feed = {
         Feed.Views.clearFeed();
         var data = Feed.pagenate(Data.currentFeed, amount);
         data.forEach((e)=>{
-            View.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
+            Feed.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
         });
     },
 
