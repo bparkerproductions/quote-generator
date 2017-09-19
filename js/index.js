@@ -5,6 +5,11 @@ Data.feedPage = 1;
 Data.currentFeed = "";
 Data.currentAuthor = "";
 
+var Feed = {
+
+}
+
+
 var App = {
     init: () => {
         App.setEvents();
@@ -13,7 +18,7 @@ var App = {
 
     setEvents: () => {
         $("#generateQuote").on("click", View.generateQuote);
-        $("#growFeed").on('click', redditWrap.growFeed);
+        $("#growFeed").on('click', Feed.growFeed);
         $("#scroll-top").on('click', View.scrollTop);
     },
 
@@ -65,7 +70,7 @@ var View = {
             App.setTwitterQuote(data.quoteText, data.quoteAuthor);
             if(data.quoteAuthor){
                 $("#author").html(`~ ${data.quoteAuthor}`);
-                redditWrap.searchByAuthor(data.quoteAuthor);
+                Feed.searchByAuthor(data.quoteAuthor);
                 View.setAuthor(data.quoteAuthor);
             }
             else{
@@ -125,65 +130,3 @@ var View = {
 
 }
 
-var redditWrap = {
-
-    searchByAuthor: (author) => {
-        Data.currentAuthor = author;
-
-        var title = author.trim().split(" ").join("+");
-        var searchURL = `https://www.reddit.com/search.json?q=${title}&sort=popular&limit=100`;
-
-        var data = redditWrap.grabJSON(searchURL);
-        View.clearFeed(); //clear feed for regenerating
-        data.then((obj)=>{
-            console.log(obj.data.children);
-            var filtered = redditWrap.filterTitle(obj.data.children, author);
-            Data.currentFeed = filtered;
-            var pagenate = redditWrap.pagenate(filtered, 5);
-            pagenate.forEach((e)=>{
-                View.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
-            })
-        })
-    },
-
-    removeDups: (arr) => {
-        var filtered = arr.filter((elem, i)=>{
-            return arr.indexOf(elem) === i;
-        });
-
-        Data.currentFeed = filtered; //set global feed object
-        return filtered;
-    },
-
-    pagenate: (arr, amount) =>{
-        return arr.slice(0,amount);
-    },
-
-    grabJSON: (url) => {
-        return new Promise((resolve, reject)=>{
-            $.getJSON(url, (data) => {resolve(data)});
-        })
-    },
-
-    filterTitle: (arr, searchTerm) =>{
-        searchTerm = searchTerm.toLowerCase();
-
-        return arr.filter((elem)=>{
-            elem = elem.data.title.toLowerCase();
-            return elem.includes(searchTerm);
-        }).reverse();
-    },
-
-    growFeed: () => {
-        Data.feedPage++;
-        var amount = parseInt(Data.feedPage)*5;
-        if(amount > Data.currentFeed.length){
-          View.maxResults();
-        }
-        View.clearFeed();
-        var data = redditWrap.pagenate(Data.currentFeed, amount);
-        data.forEach((e)=>{
-            View.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
-        });
-    }
-}
