@@ -6,4 +6,5 @@ document.write(`
 
     <!-- app modules -->
     <script src="js/app/feed.js"></script>
+    <script src="js/app/quote.js"></script>
 `);

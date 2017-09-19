@@ -87,7 +87,7 @@ var Feed = {
         else{
             return {"faClass":"rss-square","title":"Blog post or website"};
         }
-    }
+    },
 
     Views:{
         appendFeedElement: (faClass, url, title) => {

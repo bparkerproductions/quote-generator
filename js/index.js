@@ -12,7 +12,7 @@ var App = {
     },
 
     setEvents: () => {
-        $("#generateQuote").on("click", View.generateQuote);
+        Quote.setEvents();
         $("#growFeed").on('click', Feed.growFeed);
         $("#scroll-top").on('click', View.scrollTop);
     },
@@ -33,27 +33,6 @@ var App = {
 var View = {
     init: () => {
         $("#seeMore").hide();
-    },
-
-    generateQuote: () => {
-        var url = "http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=jsonp&lang=en&jsonp=?";
-        View.reset();
-
-        $.getJSON(url, (data)=>{
-            $("#quote").html(data.quoteText);
-            App.setTwitterQuote(data.quoteText, data.quoteAuthor);
-            if(data.quoteAuthor){
-                $("#author").html(`~ ${data.quoteAuthor}`);
-                Feed.searchByAuthor(data.quoteAuthor);
-                View.setAuthor(data.quoteAuthor);
-            }
-            else{
-                $("#author").html("~ Anonymous");
-                Feed.Views.clearFeed();
-                View.hideButtons();
-            }
-        });
-        var author = $("#author").text().replace("~"," ");
     },
 
     reset: () => {
