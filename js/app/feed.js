@@ -17,6 +17,10 @@ var Feed = {
             var filtered = Feed.filterTitle(obj.data.children, author);
             Data.currentFeed = filtered;
             var pagenate = Feed.pagenate(filtered, 5);
+
+            //if there are no results
+            if(pagenate.length == 0){Feed.Views.generateEmptyView()}
+
             pagenate.forEach((e)=>{
                 Feed.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
             })
@@ -107,5 +111,11 @@ var Feed = {
         clearFeed: () => {
             $("#redditFeed").empty();
         },
+
+        generateEmptyView(){
+            $("#more-from-author").text("");
+            $("#growFeed").hide();
+            $("#redditFeed").append("<p>No results found :(</p>");
+        }
     }
 }
