@@ -20,6 +20,8 @@ var Feed = {
 
             //if there are no results
             if(pagenate.length == 0){Feed.Views.generateEmptyView()}
+                console.log(pagenate.length);
+            if(filtered.length < 6){Feed.Views.hideSeeMore()}
 
             pagenate.forEach((e)=>{
                 Feed.generateFeedElem(e.data.title, e.data.url, Data.currentAuthor);
@@ -116,6 +118,10 @@ var Feed = {
             $("#more-from-author").text("");
             $("#growFeed").hide();
             $("#redditFeed").append("<p>No results found :(</p>");
+        },
+
+        hideSeeMore(){
+            $("#growFeed").hide();
         }
     }
 }
