@@ -1,6 +1,6 @@
 <h1>QuoteExplorer - Discover your favorite quotes!</h1>
 <h2> See it <b> Live </b> 
-	<a href="http://www.bparkerproductions.com/quote-generator"> here </a>
+	<a href=" http://bparkerproductions.github.io/quote-generator/`"> here </a>
 </h2>
 
 <p>
