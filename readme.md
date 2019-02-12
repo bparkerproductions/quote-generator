@@ -1,7 +1,4 @@
 <h1>QuoteExplorer - Discover your favorite quotes!</h1>
-<h2> See it <b> Live </b> 
-	<a href="http://bparkerproductions.github.io/quote-generator/"> here </a>
-</h2>
 
 <p>
 	This web app is build using only Javascript and JQuery. It integrates with
